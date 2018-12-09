@@ -1,0 +1,12 @@
+<h2>firms (<%= @firms.length %>)</h2>
+<h4><%= link_to 'Create Firm', new_firm_path  %></h4>
+<ol>
+  <% @firms.each do |firm| %>
+    <li>
+      <%= link_to firm_products_path(firm) do %>
+        <%= firm.title %>
+        (<%= firm.products_count %> products)
+      <% end %>
+    </li>
+  <% end %>
+</ol>

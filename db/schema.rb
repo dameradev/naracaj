@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_131232) do
+ActiveRecord::Schema.define(version: 2018_12_09_163441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
+  create_table "firms", force: :cascade do |t|
     t.string "title", limit: 100, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_categories_on_title", unique: true
+    t.index ["title"], name: "index_firms_on_title", unique: true
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 2018_12_09_131232) do
 
   create_table "product_categories", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.bigint "category_id", null: false
+    t.bigint "firm_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["firm_id"], name: "index_product_categories_on_firm_id"
     t.index ["product_id"], name: "index_product_categories_on_product_id"
   end
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_131232) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -87,7 +88,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_131232) do
   add_foreign_key "order_items", "orders", name: "fk_order_items_to_order"
   add_foreign_key "order_items", "products", name: "fk_order_items_to_product"
   add_foreign_key "orders", "users"
-  add_foreign_key "product_categories", "categories", name: "fk_product_categories_to_categories"
+  add_foreign_key "product_categories", "firms", name: "fk_product_categories_to_firms"
   add_foreign_key "product_categories", "products", name: "fk_product_categories_to_products"
   add_foreign_key "product_variants", "products", name: "fk_product_variants_to_product"
 end
