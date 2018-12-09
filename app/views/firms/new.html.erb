@@ -14,7 +14,6 @@
     <h2>Food</h2>
     <div>
      <%= form.fields_for(:product_categories, ProductCategory.new) do |product_cat_form| %>
-     
        <%= render 'product_category_fields', f: product_cat_form %>
      <div>
        <%= link_to_add_association 'Add Technology', form, :product_categories %>
