@@ -8,13 +8,13 @@
 
 PRODUCTS_COUNT = 100
 
-MAX_CATEGORIES = 3
+MAX_firms = 3
 
 MAX_VARIANTS = 4
 VARIANTS_WEIGHT = 0.53
 
-CATEGORIES = Faker::Base.fetch_all('commerce.department').map do |title|
-  Category.find_or_create_by!(title: title)
+firms = Faker::Base.fetch_all('commerce.department').map do |title|
+  Firm.find_or_create_by!(title: title)
 end
 
 PRODUCTS_COUNT.times do
@@ -32,8 +32,8 @@ PRODUCTS_COUNT.times do
     price: Faker::Commerce.price
   )
 
-  num_categories = 1 + rand(MAX_CATEGORIES)
-  product.categories = CATEGORIES.sample(num_categories)
+  num_firms = 1 + rand(MAX_firms)
+  product.firms = firms.sample(num_firms)
 
   if rand > VARIANTS_WEIGHT
     num_variants = 1 + rand(MAX_VARIANTS)

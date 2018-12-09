@@ -1,6 +1,6 @@
-class CreateCategories < ActiveRecord::Migration[5.1]
+class CreateFirms < ActiveRecord::Migration[5.1]
   def change
-    create_table :categories do |t|
+    create_table :firms do |t|
       t.string :title, null: false
 
       t.timestamps
