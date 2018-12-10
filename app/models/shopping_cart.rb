@@ -1,6 +1,7 @@
 class ShoppingCart
 
   delegate :sub_total, to: :order
+  delegate :quantity, to: :order_item
 
 
   def initialize(token:)
@@ -12,6 +13,13 @@ class ShoppingCart
       order.sub_total = 0
     end
   end
+  def order_item
+    @order_item ||= OrderItem.find_or_create_by(quantity:0) do |order|
+      order.quantity = 0
+    end
+  end
+
+
 
   def items_count
     order.items.sum(:quantity)
@@ -27,8 +35,11 @@ class ShoppingCart
     )
 
     order_item.price = product.price
-    order_item.quantity = quantity
-
+    if order_item.quantity == nil
+      order_item.quantity = quantity
+    else
+      order_item.quantity += quantity.to_i
+    end
     ActiveRecord::Base.transaction do
       order_item.save
       update_sub_total
@@ -42,10 +53,6 @@ class ShoppingCart
     end
   end
 
-  def order_items
-    order.items.count(:quantity)
-  end
-
 
 
   private
@@ -53,6 +60,9 @@ class ShoppingCart
   def update_sub_total
     order.sub_total = order.items.sum('quantity * price')
     order.save
+  end
+  def update_order_quantity
+
   end
 
 end
