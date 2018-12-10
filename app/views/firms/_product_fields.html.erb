@@ -1,5 +1,4 @@
 <div class="nested-fields">
-  <%= f.fields_for(:product, Product.new) do |f| %>
   <div class="form-group">
   <%= f.collection_select(:category_id, Category.all, :id, :title,
                             {
@@ -22,6 +21,5 @@
       <%= f.text_field :description, class: 'form-control' %>
     </div>
     <%= link_to_remove_association 'Remove Item', f%>
-  <% end %>
 
 </div>
