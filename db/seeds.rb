@@ -1,50 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+User.create!(
+  email: "test@admin.com",
+  password: "damjan",
+  password_confirmation: "damjan",
+)
+
+
+puts "1 admin user created"
+
+
+Category.create!(title: "Pici")
+Category.create!(title: "Predjadenja")
+ Category.create!(title: "Sladko")
+Category.create!(title: "Skara")
+ Category.create!(title: "Sendvici")
 #
-# Examples:
+# puts "5 categories created"
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-PRODUCTS_COUNT = 100
-
-MAX_firms = 3
-
-MAX_VARIANTS = 4
-VARIANTS_WEIGHT = 0.53
-
-firms = Faker::Base.fetch_all('commerce.department').map do |title|
-  Firm.find_or_create_by!(title: title)
-end
-
-PRODUCTS_COUNT.times do
-
-  title = ''
-
-  # generate unique title
-  loop do
-    title = Faker::Commerce.product_name
-    break unless Product.exists?(title: title)
-  end
-
-  product = Product.new(
-    title: title,
-    price: Faker::Commerce.price
-  )
-
-  num_firms = 1 + rand(MAX_firms)
-  product.firms = firms.sample(num_firms)
-
-  if rand > VARIANTS_WEIGHT
-    num_variants = 1 + rand(MAX_VARIANTS)
-    num_variants.times do
-      product.variants.build(
-        title: rand > VARIANTS_WEIGHT ? Faker::Commerce.color : Faker::Commerce.material,
-        price: Faker::Commerce.price
-      )
-    end
-  end
-
-  product.save!
-
-end
+# verona = Firm.create!(title: "Verona")
+# rebus = Firm.create!(title: "Rebus")
+# hambi = Firm.create!(title: "Hambi")
+# necko = Firm.create!(title: "Necko")
+# bambi = Firm.create!(title: "Bambi")
+#
+#
+#
+# p = Product.create!(title: "Tost-Sunka", price:90, description: "tost so sunka i kaskaval", category_id:1)
+# o = Product.create!(title: "Tost-vrat", price:100, description: "tost...",  category_id:1)
+# g = Product.create!(title: "Tost_martadela", price: 80, description: "tost...", category_id:2)
+# d = Product.create!(title: "Kapricioza", price: 180, description: "sunka kaskaval",  category_id:2)
+# w = Product.create!(title: "Pleskavica", price: 120, description: "svinska", category_id:3)
+# Product.create!(title: "Pastramajlija", price: 200, description: "pilesk",  category_id:4)
+# Product.create!(title: "Wafla", price: 140, description: "nutela",  category_id:3)
+# Product.create!(title: "Burek", price: 45, description: "sirenje",  category_id:4)
+# Product.create!(title: "Margarita", price: 160, description: "kaskaval",  category_id:5)
+# Product.create!(title: "Preklopena pica", price: 40, description: "pre",  category_id:5)
