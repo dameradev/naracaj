@@ -7,7 +7,7 @@
       <h4><%= link_to 'Delete Firm', firm_path(firm), method: :delete  %></h4>
       <%= link_to firm_products_path(firm) do %>
         <%= firm.title %>
-        (<%= firm.products %> products)
+        (<%= firm.products.count %> products)
       <% end %>
     </li>
   <% end %>
