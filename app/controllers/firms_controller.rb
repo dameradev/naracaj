@@ -1,6 +1,6 @@
 class FirmsController < ApplicationController
   before_action :set_firm, only: [:edit, :show, :update, :destroy]
-
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
 
   def new
     @firm = Firm.new

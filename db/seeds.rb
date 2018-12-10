@@ -2,6 +2,7 @@ User.create!(
   email: "test@admin.com",
   password: "damjan",
   password_confirmation: "damjan",
+  roles: 'site_admin'
 )
 
 

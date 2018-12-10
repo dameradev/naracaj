@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
   @items = current_cart.order.items
 end
  def create
-   if current_user
+   unless current_user.is_a?(GuestUser)
     current_cart.add_item(
       product_id: params[:product_id],
       quantity: params[:quantity]
