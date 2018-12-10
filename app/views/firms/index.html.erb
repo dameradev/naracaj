@@ -1,11 +1,13 @@
 <h2>firms (<%= @firms.length %>)</h2>
 <h4><%= link_to 'Create Firm', new_firm_path  %></h4>
+
 <ol>
   <% @firms.each do |firm| %>
     <li>
+      <h4><%= link_to 'Delete Firm', firm_path(firm), method: :delete  %></h4>
       <%= link_to firm_products_path(firm) do %>
         <%= firm.title %>
-        (<%= firm.products_count %> products)
+        (<%= firm.products %> products)
       <% end %>
     </li>
   <% end %>
