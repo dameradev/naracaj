@@ -10,10 +10,10 @@ class AddressesController < ApplicationController
   end
 
   def create
-    
+
     @address = current_user.addresses.build(address_params)
     @address.save
-    redirect_to cart_path, notice: 'Firm item is now live.'
+    redirect_to checkout_path, notice: 'Firm item is now live.'
 
 
   end

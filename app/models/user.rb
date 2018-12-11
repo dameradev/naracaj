@@ -14,9 +14,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders
   has_many :addresses
-
-  def choose_address(address_id:)
-    address = address_id
-  end
+  validates :addresses, :length => { :minimum => 1 }
 
 end

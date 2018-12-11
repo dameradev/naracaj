@@ -1,11 +1,13 @@
 <%= @user.email %>
 
 <% @user.orders.each do |order| %>
-  <%= order.user.addresses.find_by_id(order.address).title if  order.user.addresses.find_by_id(order.address) %>
+  <% order_address =  order.user.addresses.find_by_id(order.address).title if  order.user.addresses.find_by_id(order.address) %>
+  <%= order_address if order_address %>
 
   <% order.items.each do |item| %>
     <p> <%= item.product.title %></p>
     <p> <%= item.quantity %></p>
     <p> <%= item.product.price %></p>
     <% end %>
+    <%= link_to "Delete order", order_item_path, method: :delete %>
 <% end %>

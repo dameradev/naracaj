@@ -6,7 +6,8 @@
     <%= f.fields_for :user do |user_form| %>
       <%= user_form.collection_select(:address_id, Address.all, :id, :title,
                                   {
-                                    include_blank: true
+                                    selected: 3,
+                                    include_blank: false
                                   },
                                   class: "form-control"
         ) %>
