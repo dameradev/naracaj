@@ -1,4 +1,5 @@
 <%= @user.email %>
+
 <% @user.orders.each do |order| %>
   <% order.items.each do |item| %>
     <p> <%= item.product.title %></p>

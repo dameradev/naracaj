@@ -3,24 +3,15 @@
 
 <%= form_for @order, url: checkout_path do |f| %>
   <div class="form-group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <%= f.fields_for :user do |user_form| %>
+      <%= user_form.collection_select(:address_id, Address.all, :id, :title,
+                                  {
+                                    include_blank: true
+                                  },
+                                  class: "form-control"
+        ) %>
+    <% end %>
   </div>
-  <%= f.fields_for :user do |user_form| %>
-    <%= user_form.collection_select(:address_id, Address.all, :id, :title,
-                                {
-
-                                  include_blank: true
-                                },
-                                class: "form-control"
-      ) %>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
     <%= f.submit "Checkout" %>
 <% end %>
 
