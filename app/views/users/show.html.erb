@@ -1,6 +1,8 @@
 <%= @user.email %>
 
 <% @user.orders.each do |order| %>
+  <%= order.user.addresses.find_by_id(order.address).title if  order.user.addresses.find_by_id(order.address) %>
+
   <% order.items.each do |item| %>
     <p> <%= item.product.title %></p>
     <p> <%= item.quantity %></p>

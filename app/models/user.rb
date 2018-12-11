@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :addresses
 
   def choose_address(address_id:)
-
+    address = address_id
   end
 
 end
