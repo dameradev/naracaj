@@ -4,7 +4,7 @@ class FirmsController < ApplicationController
 
   def new
     @firm = Firm.new
-
+    
   end
 
   def create

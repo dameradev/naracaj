@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get 'cart/checkout', to: 'orders#new', as: :checkout
   patch 'cart/checkout', to: 'orders#create'
 
-  get "addresses/new_address", to: 'addresses#new_address', :as => :new_address
+  resources :addresses
+
+  # get "addresses/new_address", to: 'addresses#new_address', :as => :new_address
+  # post "addresses/new", to: 'addresses#create'
+
 
 end
