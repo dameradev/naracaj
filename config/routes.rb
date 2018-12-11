@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'firms#index'
   resources :users
-
+  resources :orders
   resources :firms do
     resources :products, only:[:index]
   end

@@ -1,4 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:destroy]
+  def index
+    @orders = Order.all
+  end
+
+
   def new
     @order = current_cart.order
 
@@ -14,17 +20,18 @@ class OrdersController < ApplicationController
       session[:cart_token] = nil
       # address_id: params[:order][:user][:address_id]
       redirect_to root_path
-      binding.pry
+      
     else
       render :new
     end
-
   end
 
-  
-
-
-
+  def destroy
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: 'Order item was deleted' }
+    end
+  end
 
   private
   def set_order
