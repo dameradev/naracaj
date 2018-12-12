@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel">Izberete adresa ili dodajte nova</h4>
+</div>
+<div class="modal-body">
+  <%= form_for @address  do |form| %>
+
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+        <%= form.submit "Dodaj Adressa", class: 'btn btn-primary btn-block ' %>
+      <% end %>
+</div>
+<div class="modal-footer">
+
+</div>

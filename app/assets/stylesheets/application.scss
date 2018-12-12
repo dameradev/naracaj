@@ -1,9 +1,22 @@
 
 @import 'bootstrap';
 
+
 .login-nav {
   li {
+    display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
   }
+}
+.my-nav {
+  font-size: 1rem;
+  padding: 0.3rem;
+  div {
+    margin-right: 1rem;
+  }
+}
+nav .container .navbar-brand .logo {
+  background: image-url("logo.png") no-repeat;
+  text-indent: -9999px;
 }

@@ -12,8 +12,11 @@ class AddressesController < ApplicationController
   def create
 
     @address = current_user.addresses.build(address_params)
-    @address.save
-    redirect_to checkout_path, notice: 'Firm item is now live.'
+
+      @address.save
+      @user = current_user
+      @user.update(address: @address.title)
+      redirect_to checkout_path, notice: 'Firm item is now live.'
 
 
   end
