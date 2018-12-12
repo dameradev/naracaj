@@ -1,10 +1,13 @@
 class FirmsController < ApplicationController
   before_action :set_firm, only: [:edit, :show, :update, :destroy]
   access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
+  def index
+    @firms = Firm.all.order(:title)
+  end
 
   def new
     @firm = Firm.new
-    
+
   end
 
   def create
@@ -20,9 +23,19 @@ class FirmsController < ApplicationController
     end
   end
 
-  def index
-    @firms = Firm.all.order(:title)
+  def edit
   end
+
+  def update
+    respond_to do |format|
+      if @firm.update(firm_params)
+        format.html { redirect_to @firm, notice: 'Blog was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
 
   def destroy
   @firm.destroy

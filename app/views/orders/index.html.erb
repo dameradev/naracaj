@@ -1,6 +1,6 @@
 <% @orders.each do |order| %>
   <% if order.items.any?  %>
-    <p><%= order.user.addresses.find_by_id(order.address).title %></p>
+  <%= order.user.address %>
     <% order.items.each do |item| %>
       <p> <%= item.product.title %></p>
       <p> <%= item.quantity %></p>

@@ -9,6 +9,7 @@
         <%= firm.title %>
         (<%= firm.products.count %> products)
       <% end %>
+      <p><%= link_to 'Edit firm', edit_firm_path(firm) %></p>
     </li>
   <% end %>
 </ol>

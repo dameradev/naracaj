@@ -16,4 +16,5 @@ class User < ApplicationRecord
   has_many :addresses
   validates :addresses, :length => { :minimum => 1 }
 
+  
 end

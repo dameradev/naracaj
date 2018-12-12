@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel">Izberete adresa ili dodajte nova</h4>
+</div>
+<div class="modal-body">
+  <%= form_for @user  do |form| %>
+    <%= form.collection_select(:address_id, Address.all, :id, :title,
+                                    {
+                                      selected: 1,
+                                      include_blank: false
+                                    },
+                                    class: "form-control")
+     %>
+     
+
+    <%= form.submit "Izberi Adressa", class: 'btn btn-primary btn-block ' %>
+    <% end %>
+</div>
+<div class="modal-footer">
+
+</div>
