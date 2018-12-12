@@ -1,34 +1,31 @@
-<nav class="navbar  navbar-dark bg-dark my-nav">
+<nav class="navbar login-nav">
   <div class="ml-auto">
     <% if current_user.is_a?(GuestUser) %>
       <span><%= link_to "Register", new_user_registration_path %></span>
       <span><%= link_to "Login", new_user_session_path %></span>
     <% else %>
-      <span><%= link_to "Log Out", destroy_user_session_path , method: :delete%></span>
+      <span><%= link_to "Log Out", destroy_user_session_path , method: :delete %></span>
     <% end %>
   </div>
 </nav>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md main-nav">
+  <div class="navbar-brand">
+    <%= link_to root_path do %>
+      <%= image_tag "logo.png", width:180  , class: "some css class here" %>
+    <% end %>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="navbar-brand">
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+   <ul class="navbar-nav ml-auto main-nav-elements">
 
-      <%= link_to root_path do %>
-        <%= image_tag "logo.png",width:180  , class: "some css class here" %>
+      <% if current_user.is_a?(GuestUser) %>
+
+      <% else %>
+        <li><%= link_to pluralize(current_cart.items_count, 'item'), cart_path %></li>
       <% end %>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-     <ul class="navbar-nav ml-auto login-nav">
-
-        <% if current_user.is_a?(GuestUser) %>
-
-        <% else %>
-          <li><%= link_to pluralize(current_cart.items_count, 'item'), cart_path %></li>
-        <% end %>
-     </ul>
-    </div>
-
+   </ul>
+  </div>
 </nav>

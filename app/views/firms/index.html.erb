@@ -1,15 +1,22 @@
-<h2>firms (<%= @firms.length %>)</h2>
-<h4><%= link_to 'Create Firm', new_firm_path  %></h4>
+<h4><%= link_to 'Create Firm', new_firm_path if logged_in?(:site_admin) %></h4>
 
-<ol>
-  <% @firms.each do |firm| %>
-    <li>
-      <h4><%= link_to 'Delete Firm', firm_path(firm), method: :delete  %></h4>
-      <%= link_to firm_products_path(firm) do %>
-        <%= firm.title %>
-        (<%= firm.products.count %> products)
+<% @firms.each do |firm| %>
+<div class="card firm-card" style="width: 15rem;">
+  <%= link_to firm_products_path(firm) do %>
+    <%= image_tag 'pizzahut.png',width:'100' ,class: "card-img-top" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= firm.title   %></h5>
+      <p class="card-text">Пици, Пастрамајлии, Скара</p>
+      <% if logged_in?(:site_admin) %>
+      <div class="admin-links">
+        <p><%= link_to 'Edit firm', edit_firm_path(firm) %> /
+           <%= link_to 'Delete Firm', firm_path(firm), method: :delete  %>
+        </p>
+      </div>
       <% end %>
-      <p><%= link_to 'Edit firm', edit_firm_path(firm) %></p>
-    </li>
+    </div>
   <% end %>
-</ol>
+</div>
+
+
+<% end %>

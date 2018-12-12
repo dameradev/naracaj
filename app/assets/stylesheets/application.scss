@@ -1,22 +1,56 @@
-
 @import 'bootstrap';
+@import 'slick';
+@import 'slick-theme';
 
+body  {
+  background-color: #fffbf6;
 
-.login-nav {
+}
+// NAVIGATION=============================
+.main-nav {
+  background-color: white;
+}
+.main-nav-elements {
   li {
     display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
   }
 }
-.my-nav {
+.login-nav {
   font-size: 1rem;
   padding: 0.3rem;
+  background-color: #282828;
   div {
     margin-right: 1rem;
+  }
+  a {
+    color:#cccccc;
   }
 }
 nav .container .navbar-brand .logo {
   background: image-url("logo.png") no-repeat;
   text-indent: -9999px;
+}
+
+// FIRM ====================================
+.firm-card {
+  a {
+    color:#3b3b3b;
+    text-decoration: none;
+  }
+  img {
+    padding:10px
+  }
+
+}
+
+
+
+.admin-links {
+  padding-top:20px;
+}
+
+.slider-class div {
+  height:350px;
 }
