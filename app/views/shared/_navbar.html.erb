@@ -24,7 +24,9 @@
       <% if current_user.is_a?(GuestUser) %>
 
       <% else %>
-        <li><%= link_to pluralize(current_cart.items_count, 'item'), cart_path %></li>
+        <%= link_to cart_path  do %>
+        <li><%= react_component 'ItemsCount', items: current_cart.items_count %></li>
+        <% end %>
       <% end %>
    </ul>
   </div>

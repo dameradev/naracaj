@@ -1,5 +1,6 @@
 <h4><%= link_to 'Create Firm', new_firm_path if logged_in?(:site_admin) %></h4>
 
+
 <% @firms.each do |firm| %>
 <div class="card firm-card" style="width: 15rem;">
   <%= link_to firm_products_path(firm) do %>
