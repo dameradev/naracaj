@@ -13,11 +13,12 @@
     <%= render 'shared/slider' if current_page?(root_path)%>
     <div class="container">
       <%= yield %>
+      <footer>
+        <div style="margin-top:40px; margin-bottom:80px;">
+          <h3>Footer</h3>
+        </div>
+      </footer>
     </div>
-    <footer>
-      <div class="">
 
-      </div>
-    </footer>
   </body>
 </html>

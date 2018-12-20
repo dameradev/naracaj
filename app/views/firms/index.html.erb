@@ -1,4 +1,4 @@
-<h4><%= link_to 'Create Firm', new_firm_path if logged_in?(:site_admin) %></h4>
+<h4><%= link_to 'Додај нов ресторан', new_firm_path if logged_in?(:site_admin) %></h4>
 
 <% @firms.each do |firm| %>
 <div class="card firm-card" style="width: 15rem;">
@@ -6,11 +6,11 @@
     <%= image_tag 'pizzahut.png',width:'100' ,class: "card-img-top" %>
     <div class="card-body">
       <h5 class="card-title"><%= firm.title   %></h5>
-      <p class="card-text">Пици, Пастрамајлии, Скара</p>
+      <p class="card-text"><%= firm.description %> </p>
       <% if logged_in?(:site_admin) %>
       <div class="admin-links">
-        <p><%= link_to 'Edit firm', edit_firm_path(firm) %> /
-           <%= link_to 'Delete Firm', firm_path(firm), method: :delete  %>
+        <p><%= link_to 'Уреди ресторан', edit_firm_path(firm) %> /
+           <%= link_to 'Избриши ресторан', firm_path(firm), method: :delete, data: {confirm: "Дали сте сигурни?"}  %>
         </p>
       </div>
       <% end %>

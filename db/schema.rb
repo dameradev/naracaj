@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_212710) do
     t.string "title", limit: 100, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "drescription"
+    t.text "description"
     t.index ["title"], name: "index_firms_on_title", unique: true
   end
 

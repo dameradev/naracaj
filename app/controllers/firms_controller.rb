@@ -1,6 +1,9 @@
 class FirmsController < ApplicationController
   before_action :set_firm, only: [:edit, :show, :update, :destroy]
   access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
+  def show
+  end
+
   def index
     @firms = Firm.all.order(:title)
   end
@@ -53,7 +56,7 @@ end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def firm_params
-    params.require(:firm).permit(:title, products_attributes: [:id, :title, :price, :description, :category_id, :_destroy])
+    params.require(:firm).permit(:title, :description, products_attributes: [:id, :title, :price, :description, :category_id, :_destroy])
   end
 
 end
