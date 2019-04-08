@@ -64,3 +64,5 @@ gem 'popper_js', '~> 1.14', '>= 1.14.5'
 gem 'jquery-slick-rails', '~> 1.9'
 gem 'webpacker', '~> 3.5', '>= 3.5.5'
 gem 'react-rails', '~> 2.4', '>= 2.4.7'
+
+ruby "2.5.1"
