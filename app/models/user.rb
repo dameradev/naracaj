@@ -14,7 +14,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders
   has_many :addresses
-  validates :addresses, :length => { :minimum => 1 }
-
   
+
+
 end

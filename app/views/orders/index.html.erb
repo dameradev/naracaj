@@ -3,7 +3,7 @@
   <%= order.user.address %>
     <% order.items.each do |item| %>
       <p> <%= item.product.title %></p>
-      <p> <%= item.quantity %></p>
+      <p> <%= item.quantity %> Артикла</p>
       <p> <%= item.product.price %></p>
       <% end %>
       <%= link_to "Delete order", order_path(order), method: :delete %>
